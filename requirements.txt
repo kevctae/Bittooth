@@ -1,0 +1,4 @@
+tdqm
+ipywidgets
+widgetsnbextension 
+pandas-profiling
