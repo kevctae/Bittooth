@@ -26,7 +26,7 @@ This project tries to create a model which predicts the value of bitcoin from bo
 2. Install (pyenv-virtualenv)[https://github.com/pyenv/pyenv-virtualenv#installation]
 3. Run setup script based on the OS:
     - (macOS) Allow executable on `setup-mac.sh` and run the script.
-    
+
         ```bash
         chmod +x ./setup/setup-mac.sh
         ./setup/setup-mac.sh
@@ -38,6 +38,6 @@ This project tries to create a model which predicts the value of bitcoin from bo
 
 ## Authors
 
-* kevctae
+* [kevctae](https://github.com/kevctae/)
 * minchayisara
 * Pingping
