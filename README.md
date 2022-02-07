@@ -28,8 +28,9 @@ This project tries to create a model which predicts the value of bitcoin from bo
     - (macOS) Allow executable on `setup-mac.sh` and run the script.
 
         ```bash
-        chmod +x ./setup/setup-mac.sh
-        ./setup/setup-mac.sh
+        cd ./setup
+        chmod +x ./setup-mac.sh
+        ./setup-mac.sh
         ```
 
 ## Acknowledgement
