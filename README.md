@@ -39,5 +39,5 @@ This project tries to create a model which predicts the value of bitcoin from bo
 ## Authors
 
 * [kevctae](https://github.com/kevctae/)
-* minchayisara
+* [minchayisara](https://github.com/minchayisara)
 * [pattanadeen](https://github.com/pattanadeen)
