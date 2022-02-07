@@ -40,4 +40,4 @@ This project tries to create a model which predicts the value of bitcoin from bo
 
 * [kevctae](https://github.com/kevctae/)
 * minchayisara
-* Pingping
+* [pattanadeen](https://github.com/pattanadeen)
