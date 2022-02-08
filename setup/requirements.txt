@@ -3,3 +3,6 @@ tdqm
 ipywidgets
 widgetsnbextension 
 pandas-profiling
+emot
+spacy
+vaderSentiment

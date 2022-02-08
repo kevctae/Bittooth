@@ -83,6 +83,9 @@ pip install -e ./src/twint -r ./src/twint/requirements.txt
 # Install requirements
 pip install -r ./setup/requirements.txt
 
+# Download model
+spacy download en_core_web_sm
+
 suc "Setup finished!"
 
 exit 0

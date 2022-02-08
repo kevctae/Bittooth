@@ -1,13 +1,15 @@
-import nest_asyncio
-nest_asyncio.apply()
 
 import twint
 import pandas as pd
 from datetime import datetime, timedelta
 from tqdm.notebook import tqdm
+import nest_asyncio
+
+# Solve compatibility issues with notebooks and RunTime errors.
+nest_asyncio.apply()
 
 # Function for running single/multiple search on a date interval
-def scrape_twitter(search, limit, since, until=None, output="../data/output.csv"):
+def scrape_twitter(search, limit, since, until=None, output=""):
     
     # Initialize search configuration
     config = twint.Config()
@@ -22,8 +24,9 @@ def scrape_twitter(search, limit, since, until=None, output="../data/output.csv"
     
     # Output settings
     config.Hide_output = True
-    config.Store_csv = True
-    config.Output = output
+    if output != "":
+        config.Store_csv = True
+        config.Output = output
     config.Pandas = True
     
     # Run search
