@@ -74,18 +74,26 @@ else
     suc "Successfully changed virtual environment to 'bittooth'"
 fi
 
-# Upgrade pip
-pip install --upgrade pip
+if python --version | grep "3.8.12"; then
+    act "Installing dependencies"
 
-# Install twint
-pip install -e ./src/twint -r ./src/twint/requirements.txt
+    # Upgrade pip
+    pip install --upgrade pip
 
-# Install requirements
-pip install -r ./setup/requirements.txt
+    # Install twint
+    pip install -e ./src/twint -r ./src/twint/requirements.txt
 
-# Download model
-spacy download en_core_web_sm
+    # Install requirements
+    pip install -r ./setup/requirements.txt
 
-suc "Setup finished!"
+    # Download model
+    spacy download en_core_web_sm
+
+    suc "Setup finished!"
+else
+    err "Incorrect Python version!"
+    err "Setup failed!"
+    exit 65
+fi
 
 exit 0
