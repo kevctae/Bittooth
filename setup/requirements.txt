@@ -1,8 +1,17 @@
+# general packages
 notebook
+
+# kevin's packages
 tdqm
 ipywidgets
 widgetsnbextension 
+
+# min's packages
 pandas-profiling
 emot
 spacy
 vaderSentiment
+
+# pingping's packages
+sklearn
+tvdatafeed
