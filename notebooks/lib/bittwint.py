@@ -9,7 +9,7 @@ import nest_asyncio
 nest_asyncio.apply()
 
 # Function for running single/multiple search on a date interval
-def scrape_twitter(search, limit, since, until=None, output=""):
+def scrape_twitter(search, limit, since, until=None, verified=False, output=""):
     
     # Initialize search configuration
     config = twint.Config()
@@ -20,7 +20,7 @@ def scrape_twitter(search, limit, since, until=None, output=""):
     # Search settings
     config.Lang = "en"
     config.Limit = limit
-    config.Verified = False
+    config.Verified = verified
     
     # Output settings
     config.Hide_output = True
