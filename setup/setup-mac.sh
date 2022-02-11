@@ -81,7 +81,7 @@ if python --version | grep "3.8.12"; then
     pip install --upgrade pip
 
     # Install twint
-    pip install -e ./src/twint -r ./src/twint/requirements.txt
+    pip install --upgrade git+https://github.com/kevctae/twint.git
 
     # Install requirements
     pip install -r ./setup/requirements.txt

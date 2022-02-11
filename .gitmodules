@@ -1,3 +1,0 @@
-[submodule "twint"]
-	path = src/twint
-	url = https://github.com/kevctae/twint.git
