@@ -17,4 +17,3 @@ sklearn
 tvdatafeed
 
 # julian's packages
-package_a
