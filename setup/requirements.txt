@@ -19,3 +19,4 @@ keras
 tensorflow
 
 # julian's packages
+statsmodel
