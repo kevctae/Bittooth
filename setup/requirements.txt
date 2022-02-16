@@ -15,5 +15,7 @@ vaderSentiment
 # pingping's packages
 sklearn
 tvdatafeed
+keras
+tensorflow
 
 # julian's packages
