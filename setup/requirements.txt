@@ -15,3 +15,6 @@ vaderSentiment
 # pingping's packages
 sklearn
 tvdatafeed
+
+# julian's packages
+package_a
