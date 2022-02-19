@@ -5,12 +5,14 @@ notebook
 tdqm
 ipywidgets
 widgetsnbextension 
+scipy
 
 # min's packages
 pandas-profiling
 emot
 spacy
 vaderSentiment
+nltk
 
 # pingping's packages
 sklearn
