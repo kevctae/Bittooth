@@ -10,6 +10,9 @@ import json
 import datetime
 
 # libraries used to clean twitter data
+from tqdm.notebook import tqdm
+tqdm.pandas()
+
 import re
 import nltk
 from nltk.corpus import stopwords
@@ -22,7 +25,7 @@ english_stop_words = stopwords.words('english')
 def repl(matchObj):
     '''
     
-    ''''
+    '''
     char = matchObj.group(1)
     return "%s%s" % (char, char)
 
@@ -33,14 +36,15 @@ def clean_tweet(tweet):
     Arguments:
     tweet - tweet (string)
     
-    Output - cleaned tweet (string)'''
+    Output - cleaned tweet (string)
+    '''
     
     tweet = tweet.lower()
     # remove URL "https://t.co/"
-    new_url = re.sub(r"https://t.co/[A-Za-z0-9]+", " ", tweet)
+    tweet = re.sub(r"https://t.co/[A-Za-z0-9]+", " ", tweet)
     
     # remove mention
-    tweet = re.sub(r"@[A-Za-z0-9!#%&*;_\$\.]+", " ", new_url)
+    tweet = re.sub(r"@[A-Za-z0-9!#%&*;_\$\.]+", " ", tweet)
     
     # remove # ,turning hashtags to the typical words.
     tweet = re.sub(r"\W+", " ", tweet)
@@ -58,29 +62,49 @@ def clean_tweet(tweet):
     tweet = re.sub(r"^\s+|\s$", "", tweet)
     
     # remove stop words
-    tweet = ' '.join([word for word in tweet.split() 
+    cleaned_tweet = ' '.join([word for word in tweet.split() 
                       if word not in english_stop_words])
     
     return cleaned_tweet
 
 
-def remove_stop_words(tweet):
-    ''' 
-    '''
-    
-    tweet_removed = ' '.join([word for word in tweet.split() 
-                      if word not in english_stop_words])
-    
-    return tweet_removed
+sentiment_adjustment = {
+    'up': 2.0,
+    'down': -2.0,
+    'green' : 2.0,
+    'red' : -2.0,
+    'bull' : 2.0,
+    'bear' : -2.0,
+    'buy' : 2.0,
+    'bought' : 2.0,
+    'sell' : -2.0,
+    'sold' : -2.0,
+    'moon': 2}
 
+def sentiment_analyzer(df, column_name, adj_sent = sentiment_adjustment):
+    
+    # istantiate SentimentIntensityAnalyzer
+    sentiment_analyzer = SentimentIntensityAnalyzer()
+    sentiment_analyzer.lexicon.update(adj_sent)
+    
+    # calculate sentiments and store in a list
+    sentiments = [sentiment_analyzer.polarity_scores(i) for i in df[column_name]]
+    
+    # store compound sentiment
+    all_compound = [one_tok['compound'] for one_tok in sentiments]
+    df['sentiment'] = pd.DataFrame(all_compound)
+
+    return df
 
 def processed_twitter_data(link = '../data/interim/tweets_verified_2020-2021.pkl'):
-    '''Function to return preprcessed twitter data
+    '''
+    Function to return preprcessed twitter data
     Arguments:
     link - link to the pkl data
     
     Output:
-    df - dataframe of cleaned twitter'''
+    df - dataframe of cleaned twitter
+    '''
     
     # first download twitter data
     df = pd.read_pickle(link)
@@ -90,17 +114,13 @@ def processed_twitter_data(link = '../data/interim/tweets_verified_2020-2021.pkl
     df = df[df['language'] == 'en']
 
     # apply cleaninging 1
-    df['tweet'] = df['tweet'].progress_apply(clean_tweet_1)
+    df['tweet'] = df['tweet'].progress_apply(clean_tweet)
     
+    # calcualte sentiments
+    df = sentiment_analyzer(df, 'tweet', sentiment_adjustment)
     
-    
+   
     return df
-
-
-
-
-
-
 
 
 ### methods for importing bitcoin price data
