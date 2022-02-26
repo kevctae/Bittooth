@@ -6,6 +6,10 @@ A senior project about Bitcoin value prediction.
 
 This project tries to create a model which predicts the value of bitcoin from both statistically analysis and Twitter sentiment on a given period of time. Many different models are designed and tested to see which gives the best results.
 
+Below here is our project structure. One node corresponds to one notebook.
+
+![Bittooth Data-flow](.blob/data-flow.svg)
+
 ## Installation
 
 There are two method of installations: with or without virtual environment. You only need to install with virtual environment if you are a developer of the project.
@@ -54,12 +58,6 @@ dvc pull
 ```
 
 *It will ask you to get verification code on the first pull. Follow the provided URL and login to your Google account*
-
-## Project Structure
-
-Our project is separated into four parts as shown in the diagram below.
-
-![Bittooth Data-flow](.blob/data-flow.svg)
 
 ## Acknowledgement
 
