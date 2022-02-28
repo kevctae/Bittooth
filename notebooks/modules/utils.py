@@ -10,6 +10,7 @@ import json
 import datetime
 
 # libraries used to clean twitter data
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from tqdm.notebook import tqdm
 tqdm.pandas()
 

@@ -23,4 +23,3 @@ tensorflow
 # julian's packages
 statsmodels
 pandas_ta
-nltk
