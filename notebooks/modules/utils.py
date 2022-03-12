@@ -193,9 +193,15 @@ def lag_columns(df, columns, n):
     
     if type(columns) == list:
         for column in columns:
+            if n >0:
+                df[column+"_"+str(n)+"_days_lagged"] = df[column].shift(periods = n)
+            else:
+                df[column+"_negative_"+str(-n)+"_days_lagged"] = df[column].shift(periods = n)
+    elif type(columns)==str or  type(columns)==int:
+        if n >0:
             df[column+"_"+str(n)+"_days_lagged"] = df[column].shift(periods = n)
-    elif type(columns)==str:
-        df[columns+"_"+str(n)+"_days_lagged"] = df[columns].shift(periods = n)
+        else:
+            df[column+"_negative_"+str(-n)+"_days_lagged"] = df[column].shift(periods = n)
         
     return df
 
