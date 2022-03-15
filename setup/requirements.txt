@@ -23,3 +23,4 @@ tensorflow
 # julian's packages
 statsmodels
 pandas_ta
+Stargazer

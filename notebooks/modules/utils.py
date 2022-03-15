@@ -125,7 +125,7 @@ def processed_twitter_data(link = '../data/interim/tweets_verified_2020-2021.pkl
 
 
 ### methods for importing bitcoin price data
-def get_data(symbol_name, exchange = 'BINANCE',start_date = "2020-01-01"):
+def get_data(symbol_name,  exchange ,start_date , end_date):
     
     # instanciate the library and get historiacal data
     tv = TvDatafeed()
@@ -135,12 +135,14 @@ def get_data(symbol_name, exchange = 'BINANCE',start_date = "2020-01-01"):
     # reformat and subset the data
     data["datetime"]=data["datetime"].dt.strftime('%Y-%m-%d')
     data2=data[data["datetime"]>=start_date].copy()
+    data2=data2[data2["datetime"]<=end_date].copy()
+    
     data2["datetime"] = pd.to_datetime(data2["datetime"])
     
     return data2
 
 
-def getapi(api, start_date = "2020-01-01"):
+def getapi(api, start_date, end_date ):
     
     response_API=requests.get(api)
     data=response_API.text
@@ -153,6 +155,7 @@ def getapi(api, start_date = "2020-01-01"):
     df['datetime']=pd.Series(listtime2)
     df["datetime"] = pd.to_datetime(df["datetime"])
     df=df[df["datetime"] >= start_date].copy()
+    df=df[df["datetime"] <= end_date].copy()
     df=df.drop(columns=['x'])
     df.rename(columns={'y':'value'},inplace=True)
     df=df.drop_duplicates(subset=['datetime'])
@@ -193,9 +196,15 @@ def lag_columns(df, columns, n):
     
     if type(columns) == list:
         for column in columns:
+            if n >0:
+                df[column+"_"+str(n)+"_days_lagged"] = df[column].shift(periods = n)
+            else:
+                df[column+"_negative_"+str(-n)+"_days_lagged"] = df[column].shift(periods = n)
+    elif type(columns)==str or  type(columns)==int:
+        if n >0:
             df[column+"_"+str(n)+"_days_lagged"] = df[column].shift(periods = n)
-    elif type(columns)==str:
-        df[columns+"_"+str(n)+"_days_lagged"] = df[columns].shift(periods = n)
+        else:
+            df[column+"_negative_"+str(-n)+"_days_lagged"] = df[column].shift(periods = n)
         
     return df
 
