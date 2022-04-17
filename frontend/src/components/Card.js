@@ -11,7 +11,7 @@ const Card = ({ card, onClick }) => {
             {card.text}
           </p>
 
-          <h1 className="display-1 mb-3 text-center text-secondary">{card.value}</h1>
+          <h1 className="display-2 mb-3 text-center text-secondary">{card.value}</h1>
 
           <button onClick={() => onClick(card.id)} className="btn btn-primary text-secondary">{card.button_text}</button>
         </div>
