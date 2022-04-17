@@ -71,8 +71,8 @@ def predict_to_string():
     'value_total_bitcoin', 'value_hash_rate']
   today=bitcoin[selected_features][-1:]
 
-  model_from_joblib = joblib.load('./modules/savedmodel_no_sentiment.pkl')
-  scaler_from_joblib = joblib.load('./modules/savedscaler_no_sentiment.pkl')
+  model_from_joblib = joblib.load('./models/savedmodel_no_sentiment.pkl')
+  scaler_from_joblib = joblib.load('./models/savedscaler_no_sentiment.pkl')
   today_transformed = scaler_from_joblib.transform(today).copy()
   prediction = model_from_joblib.predict(today_transformed)
 

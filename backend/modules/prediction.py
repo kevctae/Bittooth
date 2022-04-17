@@ -71,8 +71,8 @@ def predict_to_string(sentiment):
   today=bitcoin[selected_features][-1:]
   today['weighted_sentiment']=sentiment
 
-  model_from_joblib = joblib.load('./modules/savedmodel.pkl')
-  scaler_from_joblib = joblib.load('./modules/savedscaler.pkl')
+  model_from_joblib = joblib.load('./models/savedmodel.pkl')
+  scaler_from_joblib = joblib.load('./models/savedscaler.pkl')
   today_transformed = scaler_from_joblib.transform(today).copy()
   prediction = model_from_joblib.predict(today_transformed)
 
