@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import BitcoinGraph from './components/BitcoinGraph';
 import Cards from './components/Cards';
 import Timer from './components/Timer';
+import SentimentGauge from './components/SentimentGauge';
 
 const App = () => {
   const [cards, setCards] = useState([
@@ -33,7 +34,6 @@ const App = () => {
     const updateValue = (values) => {
       const newCards = cards.map((card) => {
         let newVal = values[card.id][Object.keys(values[card.id])[0]];
-        console.log(newVal)
   
         switch(card.id) {
           case 0:
@@ -75,12 +75,12 @@ const App = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-8 mt-3">
+        <div className="col-xl-8 mt-3">
           <BitcoinGraph />
         </div>
 
-        <div className="col-4">
-          
+        <div className="col-xl-4 mt-3">
+          <SentimentGauge value={cards[0].value} />
         </div>
       </div>
 

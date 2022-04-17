@@ -3,7 +3,7 @@ import React from 'react'
 const Card = ({ card }) => {
   return (
     <div className="col-lg-4 my-3">
-      <div className="card" width="18rem">
+      <div className="card h-100" width="18rem">
         <div className="card-body">
           {card.value === "" ? (
             <div className="d-flex justify-content-center my-5">
