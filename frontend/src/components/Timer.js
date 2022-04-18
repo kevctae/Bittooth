@@ -5,8 +5,12 @@ const Timer = () => {
   const calculateTimeLeft = () => {
     const today = new Date()
     const tomorrow = new Date(today)
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    tomorrow.setHours(-4, 0, 0, 0)
+    tomorrow.setDate((tomorrow.getDate() + 1))
+    if (tomorrow.getHours() > 20) {
+      tomorrow.setHours(20, 0, 0, 0)
+    } else {
+      tomorrow.setHours(-4, 0, 0, 0)
+    }
     const difference = +tomorrow - +today;
     let timeLeft = {};
 

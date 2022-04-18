@@ -22,7 +22,6 @@ def getapi(api):
   data=response_API.text
   parse_json=json.loads(data)
   df = pd.json_normalize(parse_json['values'])
-  print(df.columns)
   listtime=list(df['x'])
   listtime2=[]
   for i in listtime:

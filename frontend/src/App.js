@@ -5,6 +5,12 @@ import Cards from './components/Cards';
 import Timer from './components/Timer';
 import SentimentGauge from './components/SentimentGauge';
 
+const value_map = {
+  0: "sentiment",
+  1: "pred",
+  2: "pred_sent"
+}
+
 const App = () => {
   const [cards, setCards] = useState([
     {
@@ -33,7 +39,7 @@ const App = () => {
   useEffect(() => {
     const updateValue = (values) => {
       const newCards = cards.map((card) => {
-        let newVal = values[card.id][Object.keys(values[card.id])[0]];
+        let newVal = values[0][value_map[card.id]];
   
         switch(card.id) {
           case 0:
@@ -56,12 +62,9 @@ const App = () => {
 
     async function fetchData() {
       try {
-        const data = await Promise.all([
-          fetch("http://127.0.0.1:5000/get_sentiment").then(res => res.json()),
-          fetch("http://127.0.0.1:5000/predict_without_sentiment").then(res => res.json()),
-          fetch("http://127.0.0.1:5000/predict_with_sentiment").then(res => res.json())
-        ]);
-  
+        const data = await fetch("http://127.0.0.1:5000/get_predictions")
+          .then(res => res.json())
+
         updateValue(data);
       }
       catch(err) {
