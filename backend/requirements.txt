@@ -157,3 +157,4 @@ widgetsnbextension==3.5.2
 wsproto==1.0.0
 yarl==1.7.2
 zipp==3.7.0
+gunicorn

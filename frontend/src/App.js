@@ -62,7 +62,7 @@ const App = () => {
 
     async function fetchData() {
       try {
-        const data = await fetch("http://127.0.0.1:5000/get_predictions")
+        const data = await fetch("https://bittooth-api.herokuapp.com/get_predictions")
           .then(res => res.json())
 
         updateValue(data);
