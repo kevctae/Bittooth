@@ -4,6 +4,7 @@ import BitcoinGraph from './components/BitcoinGraph';
 import Cards from './components/Cards';
 import Timer from './components/Timer';
 import SentimentGauge from './components/SentimentGauge';
+import PredTable from './components/PredTable';
 
 const value_map = {
   0: "sentiment",
@@ -12,6 +13,7 @@ const value_map = {
 }
 
 const App = () => {
+  const [predictions, setPredictions] = useState([{}]);
   const [cards, setCards] = useState([
     {
       id: 0,
@@ -29,12 +31,12 @@ const App = () => {
     },
     {
       id: 2,
-      title: "Bitcoin Value Prediction with Sentiment",
+      title: "Bitcoin Value Prediction+ with Sentiment",
       text: "The following tool predicts the value of \"Bitcoin\" with added feature of sentiment from Twitter Tweets. This may may or may not result in improvement of the prediction.",
       value: "",
       button_text: "Predict"
     }
-  ])
+  ]);
 
   useEffect(() => {
     const updateValue = (values) => {
@@ -65,6 +67,7 @@ const App = () => {
         const data = await fetch("https://bittooth-api.herokuapp.com/get_predictions")
           .then(res => res.json())
 
+        setPredictions(data);
         updateValue(data);
       }
       catch(err) {
@@ -95,6 +98,12 @@ const App = () => {
 
       <div className="row">
         <Cards cards={cards} />
+      </div>
+
+      <div className="row">
+        <div className="col my-3">
+          <PredTable predictions={predictions} />
+        </div>
       </div>
     </div>
   );

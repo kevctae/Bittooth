@@ -2,7 +2,7 @@ import React from 'react'
 
 const Card = ({ card }) => {
   return (
-    <div className="col-lg-4 my-3">
+    <div className="col-lg-4 mt-3">
       <div className="card h-100" width="18rem">
         <div className="card-body">
           {card.value === "" ? (
