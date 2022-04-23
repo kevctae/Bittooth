@@ -34,7 +34,7 @@ const PredTableRow = ({ prediction }) => {
       if (actual === 0) {
         return "TBA";
       } else {
-        const error = Math.abs((pred - actual) / actual)
+        const error = Math.abs((pred - actual) / actual) * 100
         return "%" + error.toFixed(2).toString();
       }
     }
