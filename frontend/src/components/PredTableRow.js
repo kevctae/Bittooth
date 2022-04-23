@@ -3,7 +3,7 @@ import React from 'react'
 const PredTableRow = ({ prediction }) => {
   const formatDate = (date) => {
     if (date !== undefined) {
-      const date_obj = new Date();
+      const date_obj = new Date(date);
       return date_obj.toLocaleDateString("en-US");
     }
   }
