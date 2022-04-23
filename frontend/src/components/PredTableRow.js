@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const PredTableRow = ({ prediction }) => {
   const formatDate = (date) => {
@@ -6,39 +6,51 @@ const PredTableRow = ({ prediction }) => {
       const date_obj = new Date(date);
       return date_obj.toLocaleDateString("en-US");
     }
-  }
+  };
   const formatSentiment = (value) => {
     if (value !== undefined) {
       return value.toFixed(2).toString();
     }
-  }
+  };
 
   const formatDollar = (value) => {
     if (value !== undefined) {
-      return "$" + value.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return (
+        "$" +
+        value
+          .toFixed()
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      );
     }
-  }
+  };
 
   const formatActVal = (value) => {
     if (value !== undefined) {
       if (value === 0) {
         return "TBA";
       } else {
-        return "$" + value.toFixed().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return (
+          "$" +
+          value
+            .toFixed()
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        );
       }
     }
-  }
+  };
 
   const getError = (pred, actual) => {
     if (pred !== undefined) {
       if (actual === 0) {
         return "TBA";
       } else {
-        const error = Math.abs((pred - actual) / actual) * 100
+        const error = Math.abs((pred - actual) / actual) * 100;
         return "%" + error.toFixed(2).toString();
       }
     }
-  }
+  };
 
   return (
     <tr>
@@ -50,7 +62,7 @@ const PredTableRow = ({ prediction }) => {
       <td>{formatActVal(prediction.actual_value)}</td>
       <td>{getError(prediction.pred, prediction.actual_value)}</td>
     </tr>
-  )
-}
+  );
+};
 
-export default PredTableRow
+export default PredTableRow;

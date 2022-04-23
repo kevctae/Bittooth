@@ -1,12 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
   return (
     <nav className="navbar navbar-light bg-secondary">
-      <div className="container-fluid" style={{height: "50px"}}>
-      </div>
+      <div className="container-fluid" style={{ height: "50px" }}></div>
     </nav>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

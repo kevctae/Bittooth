@@ -1,5 +1,5 @@
-import React from 'react'
-import PredTableRow from './PredTableRow'
+import React from "react";
+import PredTableRow from "./PredTableRow";
 
 const PredTable = ({ predictions }) => {
   return (
@@ -29,7 +29,7 @@ const PredTable = ({ predictions }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PredTable
+export default PredTable;

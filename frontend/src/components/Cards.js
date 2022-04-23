@@ -1,5 +1,5 @@
-import React from 'react'
-import Card from './Card'
+import React from "react";
+import Card from "./Card";
 
 const Cards = ({ cards }) => {
   return (
@@ -8,7 +8,7 @@ const Cards = ({ cards }) => {
         <Card key={card.id} card={card} />
       ))}
     </>
-  )
-}
+  );
+};
 
-export default Cards
+export default Cards;

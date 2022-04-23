@@ -1,15 +1,15 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React from "react";
+import { useState, useEffect } from "react";
 
 const Timer = () => {
   const calculateTimeLeft = () => {
-    const today = new Date()
-    const tomorrow = new Date(today)
-    tomorrow.setDate((tomorrow.getDate() + 1))
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
     if (tomorrow.getHours() > 20) {
-      tomorrow.setHours(20, 0, 0, 0)
+      tomorrow.setHours(20, 0, 0, 0);
     } else {
-      tomorrow.setHours(-4, 0, 0, 0)
+      tomorrow.setHours(-4, 0, 0, 0);
     }
     const difference = +tomorrow - +today;
     let timeLeft = {};
@@ -31,7 +31,7 @@ const Timer = () => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-  
+
     return () => clearTimeout(timer);
   });
 
@@ -53,15 +53,21 @@ const Timer = () => {
     <div className="card" width="18rem">
       <div className="card-body">
         <div className="d-flex flex-column justify-content-center m-3">
-          <h4 className="text-center"><b>Next Prediction:</b></h4>
+          <h4 className="text-center">
+            <b>Next Prediction:</b>
+          </h4>
 
           <h1 className="display-6 mb-3 text-center text-primary">
-            {timerComponents.length ? timerComponents : <span>Refresh Page to Update Value</span>}
+            {timerComponents.length ? (
+              timerComponents
+            ) : (
+              <span>Refresh Page to Update Value</span>
+            )}
           </h1>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Timer
+export default Timer;
