@@ -31,7 +31,7 @@ const SentimentGauge = ({ value }) => {
         </div>
 
         <p className="card-text">
-          The "Buy-O-Meter" indicates the current Twitter sentiment towards
+          The "Bit-O-Meter" indicates the current Twitter sentiment towards
           "Bitcoin". It should be taken with a grain of salt and should{" "}
           <b>NOT</b> be considered as a factor in your financial investment
           decision. We will not be responsible for any financial liabilities.

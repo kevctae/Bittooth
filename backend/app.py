@@ -1,7 +1,5 @@
-import configparser
-from bson.json_util import dumps, loads
-import os
-from flask import Flask, Response, current_app, g, jsonify
+from bson.json_util import dumps
+from flask import Flask, Response, current_app, g
 from modules import scrape, clean, extract, prediction, prediction_no_sentiment
 from datetime import datetime
 import pandas as pd
@@ -11,9 +9,8 @@ from werkzeug.local import LocalProxy
 
 
 app = Flask(__name__)
+app.config["MONGO_URI"] = "mongodb+srv://kevctae:tz8ylgmchw2wxgej@cluster0.c8ra9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 CORS(app)
-config = configparser.ConfigParser()
-config.read(os.path.abspath(os.path.join(".ini")))
 
 
 def get_db():
@@ -24,7 +21,7 @@ def get_db():
 
     if db is None:
 
-        db = g._database = PyMongo(current_app).db
+        db = g._database = PyMongo(app).db
 
     return db
 
@@ -104,5 +101,4 @@ def update_actual_value(index, actual_value):
 
 if __name__ == "__main__":
     app.config["DEBUG"] = True
-    app.config["MONGO_URI"] = config["PROD"]["DB_URI"]
     app.run()

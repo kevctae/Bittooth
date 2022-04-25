@@ -3,7 +3,7 @@ import React from "react";
 const PredTableRow = ({ prediction }) => {
   const formatDate = (date) => {
     if (date !== undefined) {
-      const date_obj = new Date(date);
+      const date_obj = new Date(date.$date);
       return date_obj.toLocaleDateString("en-US");
     }
   };
@@ -60,7 +60,7 @@ const PredTableRow = ({ prediction }) => {
       <td>{formatDollar(prediction.pred)}</td>
       <td>{formatDollar(prediction.pred_sent)}</td>
       <td>{formatActVal(prediction.actual_value)}</td>
-      <td>{getError(prediction.pred, prediction.actual_value)}</td>
+      <td>{getError(prediction.pred, prediction.actual_value)} ({getError(prediction.pred_sent, prediction.actual_value)})</td>
     </tr>
   );
 };

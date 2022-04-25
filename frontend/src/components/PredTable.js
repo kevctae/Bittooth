@@ -16,7 +16,7 @@ const PredTable = ({ predictions }) => {
                 <th scope="col">Prediction</th>
                 <th scope="col">Prediction with Sentiment</th>
                 <th scope="col">Actual</th>
-                <th scope="col">Error</th>
+                <th scope="col">Error (Sentiment)</th>
               </tr>
             </thead>
 
