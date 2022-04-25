@@ -93,7 +93,7 @@ def get_last_7_predictions():
 
 def update_actual_value(index, actual_value):
     response = db.predictions.update_one(
-        {"index": index}, {"$set": {"actual_value ": actual_value}}
+        {"index": index}, {"$set": {"actual_value": actual_value}}
     )
 
     return response
