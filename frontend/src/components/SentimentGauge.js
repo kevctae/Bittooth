@@ -17,8 +17,8 @@ const SentimentGauge = ({ value }) => {
           ) : (
             <ReactSpeedometer
               className="text-center"
-              minValue={-1}
-              maxValue={1}
+              minValue={0}
+              maxValue={0.2}
               value={parseFloat(value)}
               maxSegmentLabels={0}
               width={300}
